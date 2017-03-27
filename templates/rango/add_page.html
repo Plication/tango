@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加页面</title>
+</head>
+<body>
+{% if cat %}
+<form id="page_form" method="POST" action="/rango/category/{{ cat.slug }}/add_page/">
+{% else %}  目录不存在
+{% endif %}
+    {% csrf_token %}
+     {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+{#    {% for hidden in form.hidden_fields %}#}
+{#        {{ hidden }}#}
+{#    {% endfor %}#}
+{##}
+{#    {% for field in form.visible_fields %}#}
+{#        {{ field.errors }}#}
+{#        {{ field.help_text }}#}
+{#        {{ field }}#}
+{#    {% endfor %}#}
+    <input type="submit" name="submit" value="添加" />
+
+</form>
+
+</body>
+</html>

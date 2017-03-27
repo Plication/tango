@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加条目</title>
+</head>
+<body>
+<h1>添加目录</h1>
+
+
+
+
+<form id="category_form" method="POST" action="/rango/add_category/">
+
+    {% csrf_token %}
+     {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                {{ field.help_text }}
+                {{ field }}
+            {% endfor %}
+
+
+    <input type="submit" name="submit" value="添加" />
+
+</form>
+
+
+</body>
+</html>
